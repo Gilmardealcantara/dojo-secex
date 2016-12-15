@@ -35,10 +35,16 @@ class ProductApiTests(BaseTestCase):
     def test_json_return_product_factory(self):
         response = self.client.get("/api/product/")
         print(dir(response.json['columns']))
+        index_id = response.json['columns'].index('id')
         index_name = response.json['columns'].index('name')
+        index_value = response.json['columns'].index('value')
         for i in range(10):
+            self.assertEqual(response.json['data'][i][index_id],
+                    self.factory_products[i].id)
             self.assertEqual(response.json['data'][i][index_name],
                     self.factory_products[i].name)
+            self.assertEqual(response.json['data'][i][index_value],
+                    self.factory_products[i].value)
 
 
 
