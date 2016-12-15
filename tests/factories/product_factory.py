@@ -8,8 +8,7 @@ class ProductFactory(factory.alchemy.SQLAlchemyModelFactory):
     class Meta:
         model = Product
         sqlalchemy_session = db.session
-
-    
-    product =  "ds"
+ 
+    name =  "produtox"
     value = 10
  

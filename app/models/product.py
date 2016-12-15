@@ -6,9 +6,10 @@ class Product(db.Model):
     __tablename__ = 'product'
 
     id = Column(Integer, primary_key=True)
-    product = Column(String)
+    name = Column(String)
     value = Column(Integer)
 
     def __iter__(self):
-        yield 'product', self.product
+        yield 'id', self.id
+        yield 'name', self.name
         yield 'value', self.value
