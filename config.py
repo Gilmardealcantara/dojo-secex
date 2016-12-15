@@ -13,7 +13,7 @@ class Production(Config):
 
 class Development(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgres://secex'
+    SQLALCHEMY_DATABASE_URI = 'postgres:///secex'
 
 
 class Testing(Config):
