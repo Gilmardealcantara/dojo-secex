@@ -30,11 +30,11 @@ class ProductApiTests(BaseTestCase):
 
     def test_json_return_10_products(self):
         response = self.client.get("/api/product/")
+        print(response)
         self.assertEqual(len(response.json['data']), 10)
 
     def test_json_return_product_factory(self):
         response = self.client.get("/api/product/")
-        print(dir(response.json['columns']))
         index_id = response.json['columns'].index('id')
         index_name = response.json['columns'].index('name')
         index_value = response.json['columns'].index('value')
@@ -45,6 +45,52 @@ class ProductApiTests(BaseTestCase):
                     self.factory_products[i].name)
             self.assertEqual(response.json['data'][i][index_value],
                     self.factory_products[i].value)
+
+
+    def test_json_shoudl_return_not_repeated_products(self):
+        response = self.client.get("/api/product/")
+        index_name = response.json['columns'].index('name')
+        list_data = [row[index_name] for row in response.json['data']]
+        self.assertEqual(len(list_data), len(set(list_data)))
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

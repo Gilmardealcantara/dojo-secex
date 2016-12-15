@@ -1,7 +1,7 @@
 import factory
 from app import db
 from app.models.product import Product
-
+import factory
 
 class ProductFactory(factory.alchemy.SQLAlchemyModelFactory):
 
@@ -9,6 +9,6 @@ class ProductFactory(factory.alchemy.SQLAlchemyModelFactory):
         model = Product
         sqlalchemy_session = db.session
  
-    name =  "produtox"
+    name =  factory.Sequence(lambda n: "Product %03d" % n)
     value = 10
  
