@@ -62,3 +62,18 @@
     });
 
 })(jQuery); // End of use strict
+
+
+var i=1
+function changeBGHeader(){
+    $('header').fadeTo('slow', 0.3, function(){
+        $(this).css({'background-image':'url("'+location.origin+'/static/img/header' + i + '.jpg")'})
+         i++;
+        if(i==5)i=1;
+    }).delay(1000).fadeTo('slow', 1); 
+
+    setTimeout("changeBGHeader()",5000); 
+}
+
+changeBGHeader();
+
